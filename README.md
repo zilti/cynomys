@@ -11,6 +11,10 @@ You should not be using this library if you don't like documenting where you pla
 
 ## How is it used? ##
 
+```clojure
+[cynomys "0.2.0"]
+```
+
 ### Pure middleware ###
 
 Any function taking one argument can be registered as a middleware for some defined workflow:
