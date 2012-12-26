@@ -17,7 +17,8 @@ Any function taking one argument can be registered as a middleware for some defi
 
 ```clojure
 (use 'cynomys.core)
-(add-middleware :preprocessing #(assoc % :yet-another 5))```
+(add-middleware :preprocessing #(assoc % :yet-another 5))
+```
 
 If you want to provide a middleware entry point in your program, just pass your dataset to the middleware manager (only one argument is allowed right now):
 
@@ -25,7 +26,8 @@ If you want to provide a middleware entry point in your program, just pass your 
 (use 'cynomys.core)
 (exec-middlewares :preprocessing {:blue "red"})
 
-; => {:blue "red", :yet-another 5}```
+; => {:blue "red", :yet-another 5}
+```
 
 ### Lamina Channels ###
 
@@ -35,20 +37,23 @@ Again you can register and deregister stuff:
 
 ```clojure
 (use 'cynomys.core)
-(register-channel :mainstream (channel))```
+(register-channel :mainstream (channel))
+```
 
 This registers a new channel. Note, though, that you'll probably want to reference that channel from somewhere, or it will only consume memory and middleware.
 Registering a channel chains a middleware-executor at the end of it, so chose wisely where you want to chain your stuff in. The middleware executor will execute middleware saved under the :ch-channelname keyword:
 
 ```clojure
 (use 'cynomys.core)
-(add-middleware :ch-mainstream (fn [x] whatever-you-want))```
+(add-middleware :ch-mainstream (fn [x] whatever-you-want))
+```
 
 And if you deregister the channel, all middleware associated to it will be wiped, your channel closed and everything explodes into a cloud of bits and bytes:
 
 ```clojure
 (use 'cynomys.core)
-(deregister-channel :ch-mainstream)```
+(deregister-channel :ch-mainstream)
+```
 
 ## License ##
 
